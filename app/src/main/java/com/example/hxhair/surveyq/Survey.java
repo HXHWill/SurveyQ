@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class Survey extends AppCompatActivity {
     String QTittle="Who am I";
     String[] Qoptions={"Pikachu","Blastoise","Charizard"};
-    int QNum=-1;
+    String QStyle="mutiple";
     //int QNum=1;
 
     CheckBox[] cbList;
@@ -26,6 +27,7 @@ public class Survey extends AppCompatActivity {
         setContentView(R.layout.activity_survey);
         // get the survey layout
         ConstraintLayout SurLayout = (ConstraintLayout)findViewById(R.id.surveyLayout);
+        LinearLayout optionLinear=(LinearLayout)findViewById(R.id.OptionLine);
 
         //The Question titile
         tv=(TextView)findViewById(R.id.textView1);
@@ -36,8 +38,16 @@ public class Survey extends AppCompatActivity {
 
         //the nextQuestion Button
         nBtn=(Button)findViewById(R.id.NextBtn);
-        if(QNum==-1)
-            nBtn.setText("Complete");
+//        if(QNum==-1)
+//            nBtn.setText("Complete");
+//        CheckBox cb1=new CheckBox(this);
+//        cb1.setText("option11111111");
+//
+//        CheckBox cb2=new CheckBox(this);
+//        cb2.setText("option2");
+
+//        optionLinear.addView(cb1,0);
+//        optionLinear.addView(cb2,1);
 
 
         //add the options to the view
@@ -46,23 +56,23 @@ public class Survey extends AppCompatActivity {
             cbList[i]=new CheckBox(this);
             cbList[i].setText(Qoptions[i]);
             //set the position of each options
-            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) tv.getLayoutParams();
-            ConstraintLayout.LayoutParams newParams = new ConstraintLayout.LayoutParams(
-                    ConstraintLayout.LayoutParams.WRAP_CONTENT,
-                    ConstraintLayout.LayoutParams.WRAP_CONTENT);
-            newParams.leftToLeft=params.leftToLeft;
-            newParams.rightToRight=params.rightToRight;
-            newParams.topToTop=params.topToTop;
-            newParams.bottomToBottom=params.bottomToBottom;
-            newParams.horizontalBias=0.3f;
-            newParams.verticalBias=(float)(0.4+0.1*i);//to seperate each options position
-            newParams.bottomMargin=8;
-            newParams.topMargin=8;
-            newParams.leftMargin=8;
-            newParams.rightMargin=8;
+//            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) tv.getLayoutParams();
+//            ConstraintLayout.LayoutParams newParams = new ConstraintLayout.LayoutParams(
+//                    ConstraintLayout.LayoutParams.WRAP_CONTENT,
+//                    ConstraintLayout.LayoutParams.WRAP_CONTENT);
+//            newParams.leftToLeft=params.leftToLeft;
+//            newParams.rightToRight=params.rightToRight;
+//            newParams.topToTop=params.topToTop;
+//            newParams.bottomToBottom=params.bottomToBottom;
+//            newParams.horizontalBias=0.3f;
+//            newParams.verticalBias=(float)(0.4+0.1*i);//to seperate each options position
+//            newParams.bottomMargin=8;
+//            newParams.topMargin=8;
+//            newParams.leftMargin=8;
+//            newParams.rightMargin=8;
 
-            SurLayout.addView(cbList[i],newParams);//add to the View
-
+            //SurLayout.addView(cbList[i],newParams);//add to the View
+            optionLinear.addView(cbList[i]);
         }
 
     }
